@@ -1,2 +1,2 @@
-# DataStructureInC
-PracticeOfDatastructure
+# DataStructures
+PracticeInC   reference from GeeksforGeeks.com
