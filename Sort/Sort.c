@@ -24,6 +24,11 @@ void QuickSortCLRS(int[], int, int);      int Partition(int[], int, int);
 void QuickSortHoare(int[], int, int);
 void MergeSort(int[], int, int);  void Merge(int[], int, int, int);
 void HeapSortCLRS(int[],int);    void MaxHeapBuild(int[],int);     void MaxHeapify(int[],int,int);
+void mergesortIterative(int[], int);
+
+//an utility function to find smaller one
+int minimum(int, int);
+
 
 int main() {
 	int a[] = {10,2,3,4,5,6,7,8,9,1};
@@ -33,6 +38,7 @@ int main() {
 	printf("\n");
 
 	//Sorting Function right here: Mind the arguments when you call the function && The array index starts from 0
+	mergesortIterative(a, n);
 
 	for (int i = 0;i < n;i++)
 		printf("[%d]\t", a[i]);
@@ -152,6 +158,7 @@ void Merge(int a[], int p, int q, int r) {
 
 
 
+
 //Heapsort
 void HeapSortCLRS(int A[],int n)
 {
@@ -238,3 +245,44 @@ void InsertionSort(int A[], int n) {
 	}
 }
 
+
+
+int minimum(int a, int b) { return (a < b) ? a : b; }
+
+//reference:https://www.geeksforgeeks.org/iterative-merge-sort/
+
+
+
+void mergesortIterative(int* list,int n) {
+
+	int curr_size;  // For current size of subarrays to be merged curr_size varies from 1 to n/2 
+	int left_start; // For picking starting index of left subarray to be merged 
+
+	//Merge subarrays in bottom up manner.  
+	//First merge subarrays of size 1 to create sorted subarrays of size 2
+	//then merge subarrays of size 2 to create sorted subarrays of size 4, and so on. 
+
+	for (curr_size = 1; curr_size <= n - 1; curr_size = 2 * curr_size)
+	{
+		// Pick starting point of different subarrays of current size 
+		for (left_start = 0; left_start < n - 1; left_start += 2 * curr_size)
+		{
+			// Find ending point of left subarray. mid+1 is starting point of right 
+			int mid = minimum(left_start + curr_size - 1, n - 1);
+
+
+			//Find ending point of right subarray
+			int right_end = minimum(left_start + 2 * curr_size - 1, n - 1);
+
+
+			// Merge Subarrays arr[left_start...mid] & arr[mid+1...right_end] 
+			Merge(list, left_start, mid, right_end);
+		}
+	}
+
+
+
+
+
+
+}
