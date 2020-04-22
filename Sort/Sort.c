@@ -279,10 +279,4 @@ void mergesortIterative(int* list,int n) {
 			Merge(list, left_start, mid, right_end);
 		}
 	}
-
-
-
-
-
-
 }
