@@ -8,7 +8,6 @@
 //https://visualstudio.microsoft.com/zh-hant/vs/?rr=https%3A%2F%2Fwww.google.com%2F
 
 #include<stdio.h>
-#include<stdio.h> 
 #include<stdlib.h> 
 #include<limits.h>
 
