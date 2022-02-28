@@ -20,15 +20,17 @@ int main() {
 }
 
 void BubbleSort(int arr[], int n) {
-  // i=0~n-2     j=n-1 downtoi+1
-  for (int i = 0; i < n - 1; ++i) {
+  // i=0~n-1
+  // j=0~n-i-1
+  for (int i = 0; i < n; ++i) {
     int flag = 0;
-    for (int j = n - 1; j > i; --j) {
-      if (arr[j - 1] > arr[j]) {
-        swap(&arr[j], &arr[j - 1]);
+    for (int j = 0; j < n - i - 1; ++j) {
+      if (arr[j] > arr[j + 1]) {
+        swap(&arr[j], &arr[j + 1]);
         flag = 1;
       }
     }
+    // sorted
     if (flag == 0) {
       break;
     }
